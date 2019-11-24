@@ -1,0 +1,15 @@
+{
+  "name": "sparcl",
+  "version": "0.1.0",
+  "description": "A simple parser combinator library",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "node_modules/.bin/tsc",
+    "watch": "node_modules/.bin/tsc -w"
+  },
+  "author": "4erem6a",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.6.4"
+  }
+}
