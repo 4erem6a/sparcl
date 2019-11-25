@@ -5,9 +5,9 @@ Simple Parser Combinator Library
 # Examples
 
 ```js
-import { sequence, separatedBy, string, letters, eof } from "sparcl";
+import { sequence, separatedBy, string, digit, eof } from "sparcl";
 
-const parser = sequence(separatedBy(string(","), letters), eof);
+const parser = sequence(separatedBy(string(","), digit), eof);
 
 const source = "1,2,3,4,5";
 
