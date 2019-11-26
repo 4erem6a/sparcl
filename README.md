@@ -2,6 +2,8 @@
 
 Simple Parser Combinator Library
 
+[![npm version](https://badge.fury.io/js/sparcl.svg)](https://badge.fury.io/js/sparcl)
+
 # Examples
 
 ```js
