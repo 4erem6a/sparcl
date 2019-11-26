@@ -30,18 +30,12 @@ export class InputStream {
   }
 
   public get currentLine() {
-    const position = this.sourcePosition;
-
-    const leadingLinebreak =
-      position.line > 1
-        ? this.slice(0, position.absolute).lastIndexOf("\n")
-        : 0;
-
-    const trailingLinebreak = this.slice(position.absolute).indexOf("\n");
+    const leadingLinebreak = this.slice(0, this._position).lastIndexOf("\n");
+    const trailingLinebreak = this.slice(this._position).indexOf("\n");
 
     const line = this.slice(
       leadingLinebreak == -1 ? 0 : leadingLinebreak + 1,
-      trailingLinebreak == -1 ? undefined : trailingLinebreak
+      trailingLinebreak == -1 ? undefined : this._position + trailingLinebreak
     );
 
     return line;
