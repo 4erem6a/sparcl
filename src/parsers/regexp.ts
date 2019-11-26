@@ -6,10 +6,7 @@ export function regexp(pattern: RegExp) {
     const match = src.matchRegExp(pattern);
 
     if (!match) {
-      return raise(
-        `Expected /${pattern.source}/${pattern.flags}`,
-        src.sourcePosition
-      );
+      return raise(`Expected /${pattern.source}/${pattern.flags}`, src);
     }
 
     src.move(match[0].length);
