@@ -5,17 +5,32 @@ Simple Parser Combinator Library
 # Examples
 
 ```js
-import { sequence, separatedBy, string, letters, eof } from "sparcl";
+// Number sequence parsing
+import {
+  sequence,
+  separatedBy,
+  string,
+  takeAll,
+  whitespace,
+  digits,
+  eof
+} from "sparcl";
 
-const parser = sequence(separatedBy(string(","), letters), eof);
+const parser = sequence(
+  separatedBy(
+    sequence(string(","), takeAll(whitespace)),
+    digits.map(Number)
+  ),
+  eof
+).map(([numbers]) => numbers);
 
-const source = "1,2,3,4,5";
+const source = "1, 5, 9, 12";
 
 const result = parser.parse(source);
 
 if (result.isError) {
   console.error(result.error.message);
 } else {
-  console.log(result.value);
+  console.log(result.value);  // [ 1, 5, 9, 12 ]
 }
 ```
