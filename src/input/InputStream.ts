@@ -13,7 +13,7 @@ export class InputStream {
     return this._position;
   }
 
-  public get sourcePosition(): SourcePosition {
+  public get sourcePosition() {
     const slice = this.slice(0, this._position);
 
     const line = slice.split("").filter(c => c == "\n").length + 1;
@@ -26,7 +26,25 @@ export class InputStream {
       line,
       column,
       absolute: this._position
-    };
+    } as SourcePosition;
+  }
+
+  public get currentLine() {
+    const position = this.sourcePosition;
+
+    const leadingLinebreak =
+      position.line > 1
+        ? this.slice(0, position.absolute).lastIndexOf("\n")
+        : 0;
+
+    const trailingLinebreak = this.slice(position.absolute).indexOf("\n");
+
+    const line = this.slice(
+      leadingLinebreak == -1 ? 0 : leadingLinebreak + 1,
+      trailingLinebreak == -1 ? undefined : trailingLinebreak
+    );
+
+    return line;
   }
 
   public get isEof() {
