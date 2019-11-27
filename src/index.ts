@@ -4,6 +4,7 @@ export * from "./combinators/optional";
 export * from "./combinators/separatedBy";
 export * from "./combinators/sequence";
 export * from "./combinators/takeAll";
+export * from "./combinators/takeOneOrMore";
 
 export * from "./input/InputStream";
 export * from "./input/SourcePosition";
