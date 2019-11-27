@@ -5,7 +5,7 @@ export function optional<T>(parser: Parser<T>) {
   return createParser<T | undefined>(src => {
     const result = parser.parse(src);
 
-    const value = result.isError ? undefined : result;
+    const value = result.isError ? undefined : result.value;
 
     return complete(value as T | undefined);
   });
