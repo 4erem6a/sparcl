@@ -8,6 +8,10 @@
     "watch": "node_modules/.bin/tsc -w",
     "prepublishOnly": "yarn build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4erem6a/sparcl.git"
+  },
   "author": "4erem6a",
   "license": "MIT",
   "devDependencies": {
