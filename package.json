@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node_modules/.bin/tsc",
     "watch": "node_modules/.bin/tsc -w",
+    "test": "jest",
     "prepublishOnly": "yarn build"
   },
   "repository": {
@@ -15,6 +16,7 @@
   "author": "4erem6a",
   "license": "MIT",
   "devDependencies": {
+    "jest": "^24.9.0",
     "typescript": "^3.6.4"
   }
 }
