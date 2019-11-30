@@ -51,7 +51,7 @@ export class Parser<T> {
   }
 
   public chain<R>(fn: (result: ParserResult<T>) => Parser<R>) {
-    return createParser<R>(source => {
+    return new Parser<R>(source => {
       const result = this.parse(source);
 
       return fn(result).parse(source);
