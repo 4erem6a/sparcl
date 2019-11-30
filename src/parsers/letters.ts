@@ -1,4 +1,4 @@
-import { takeAll } from "../combinators/takeAll";
+import { takeOneOrMore } from "./../combinators/takeOneOrMore";
 import { letter } from "./letter";
 
-export const letters = takeAll(letter).map(res => res.join(""));
+export const letters = takeOneOrMore(letter).map(res => res.join(""));
