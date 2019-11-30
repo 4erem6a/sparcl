@@ -1,6 +1,6 @@
 {
   "name": "sparcl",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A simple parser combinator library",
   "main": "dist/index.js",
   "scripts": {
