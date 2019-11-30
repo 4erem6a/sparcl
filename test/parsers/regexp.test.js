@@ -1,10 +1,11 @@
 const { regexp } = require("../..");
 
 test("RegExp parser", () => {
-  const parser = regexp(/^[a-z]{3}\s\sTEST/);
+  const re = /^[a-z]{3}\s\sTEST/;
 
-  const { isError, value } = parser.parse("abc  TEST");
+  const parser = regexp(re);
 
-  expect(isError).toBeFalsy();
-  expect(value[0]).toBe("abc  TEST");
+  const input = "abc  TEST";
+
+  expect(parser).toMatchResult(input, input.match(re));
 });

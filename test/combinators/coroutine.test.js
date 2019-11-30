@@ -11,8 +11,5 @@ test("Coroutine combinator", () => {
     return complete(`${hello.value}_${world.value}`);
   });
 
-  const { isError, value } = parser.parse("hello world");
-
-  expect(isError).toBeFalsy();
-  expect(value).toBe("hello_world");
+  expect(parser).toMatchResult("hello world!", "hello_world");
 });
