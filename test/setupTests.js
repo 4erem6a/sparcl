@@ -7,7 +7,7 @@ expect.extend({
 
     return { pass: true };
   },
-  toMatchError(receiver, input, expectedError) {
+  toReturnError(receiver, input, expectedError) {
     const { isError, error } = receiver.parse(input);
 
     expect(isError).toBeTruthy();
