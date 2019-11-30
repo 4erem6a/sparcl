@@ -1,6 +1,6 @@
 const { regexp } = require("../..");
 
-test("RegExp parser", () => {
+test("regexp parser", () => {
   const re = /^[a-z]{3}\s\sTEST/;
 
   const parser = regexp(re);

@@ -1,6 +1,6 @@
 const { string } = require("../..");
 
-test("String parser", () => {
+test("string parser", () => {
   const parser = string("Hello, world!");
 
   expect(parser).toMatchResult("Hello, world!", "Hello, world!");

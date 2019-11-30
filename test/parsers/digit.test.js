@@ -1,6 +1,6 @@
 const { digit } = require("../..");
 
-test("Digit parser", () => {
+test("digit parser", () => {
   Array(10)
     .fill(0)
     .map((v, i) => String(i))

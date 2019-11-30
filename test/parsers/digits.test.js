@@ -1,5 +1,5 @@
 const { digits } = require("../..");
 
-test("Digits parser", () => {
+test("digits parser", () => {
   expect(digits).toMatchResult("5123", "5123");
 });

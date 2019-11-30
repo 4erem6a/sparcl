@@ -1,6 +1,6 @@
 const { letter } = require("../..");
 
-test("Letter parser", () => {
+test("letter parser", () => {
   Array(26)
     .fill(0)
     .map((v, i) => String.fromCharCode(97 + i))

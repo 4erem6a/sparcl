@@ -1,6 +1,6 @@
 const { optional, string } = require("../..");
 
-test("Optional combinator", () => {
+test("optional combinator", () => {
   const parser = optional(string("test"));
 
   expect(parser).toMatchResult("test", "test");

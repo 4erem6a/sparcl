@@ -1,5 +1,5 @@
 const { whitespace } = require("../..");
 
-test("Whitespace parser", () => {
+test("whitespace parser", () => {
   expect(whitespace).toMatchResult(" ", " ");
 });

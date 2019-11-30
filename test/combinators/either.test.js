@@ -1,6 +1,6 @@
 const { either, letter, digit } = require("../..");
 
-test("Either combinator", () => {
+test("either combinator", () => {
   const parser = either(letter, digit);
 
   expect(parser).toMatchResult("a", "a");

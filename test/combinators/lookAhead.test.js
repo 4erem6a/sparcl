@@ -1,6 +1,6 @@
 const { sequence, lookAhead, string, tapSource } = require("../..");
 
-test("Look ahead combinator", () => {
+test("lookAhead combinator", () => {
   const parser = lookAhead(string("Hello, world!"));
 
   let inputStream;

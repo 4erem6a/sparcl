@@ -1,5 +1,5 @@
 const { eof } = require("../..");
 
-test("EOF parser", () => {
+test("eof parser", () => {
   expect(eof).toMatchResult("", undefined);
 });

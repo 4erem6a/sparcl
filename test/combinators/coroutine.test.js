@@ -1,6 +1,6 @@
 const { coroutine, string, whitespace, complete } = require("../..");
 
-test("Coroutine combinator", () => {
+test("coroutine combinator", () => {
   const parser = coroutine(function*() {
     const hello = yield string("hello");
 
