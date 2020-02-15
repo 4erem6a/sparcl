@@ -8,7 +8,8 @@
     "buildRelease": "yarn clear && node_modules/.bin/tsc",
     "buildDebug": "yarn clear && node_modules/.bin/tsc --inlineSourceMap",
     "test": "node_modules/.bim/jest",
-    "prepublishOnly": "yarn build && yarn test"
+    "lint": "node_modules/.bin/eslint src/**",
+    "prepublishOnly": "yarn lint && yarn build && yarn test"
   },
   "repository": {
     "type": "git",
