@@ -12,7 +12,7 @@ export class Parser<T> {
     return this.parserFunction(inputStream);
   }
 
-  public map<R>(mapper: (result: T) => R) {
+  public map<R>(mapper: (result: T) => R): Parser<R> {
     return new Parser<R>(source => {
       const result = this.parse(source);
 
@@ -20,7 +20,7 @@ export class Parser<T> {
     });
   }
 
-  public mapResult<R>(mapper: (result: ParsingResult<T>) => ParsingResult<R>) {
+  public mapResult<R>(mapper: (result: ParsingResult<T>) => ParsingResult<R>): Parser<R> {
     return new Parser<R>(source => {
       const result = this.parse(source);
 
@@ -28,7 +28,7 @@ export class Parser<T> {
     });
   }
 
-  public mapError<R>(mapper: (error: ParseError) => ParsingResult<R>) {
+  public mapError<R>(mapper: (error: ParseError) => ParsingResult<R>): Parser<T | R> {
     return new Parser<T | R>(source => {
       const result = this.parse(source);
 
@@ -36,17 +36,17 @@ export class Parser<T> {
     });
   }
 
-  public default<R = T>(defaultResult: R) {
+  public default<R = T>(defaultResult: R): Parser<T | R> {
     return this.mapError<R>(() => complete(defaultResult));
   }
 
-  public throwing() {
+  public throwing(): Parser<T> {
     return this.mapError<T>(error => {
       throw error;
     });
   }
 
-  public chain<R>(fn: (result: ParsingResult<T>) => Parser<R>) {
+  public chain<R>(fn: (result: ParsingResult<T>) => Parser<R>): Parser<R> {
     return new Parser<R>(source => {
       const result = this.parse(source);
 
