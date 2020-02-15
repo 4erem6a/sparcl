@@ -1,9 +1,9 @@
-import { Parser, createParser } from "../parsing/Parser";
+import { Parser } from "../parsing/Parser";
 import { complete } from "../parsing/ParsingResult";
 
-export function takeAll<T>(parser: Parser<T>) {
-  return createParser<T[]>(src => {
-    const result = [];
+export function noneOrMore<T>(parser: Parser<T>): Parser<T[]> {
+  return new Parser<T[]>(src => {
+    const result: T[] = [];
 
     let currentResult = parser.parse(src);
 
