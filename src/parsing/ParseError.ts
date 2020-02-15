@@ -1,34 +1,15 @@
-import { InputStream } from "../input/InputStream";
-import { SourcePosition } from "../input/SourcePosition";
+import { InputStream, SourceLocation } from "@4erem6a/inputstream";
 
 export class ParseError extends Error {
   public readonly line?: string;
-  public readonly position?: SourcePosition;
+  public readonly location?: SourceLocation;
 
-  public constructor(
-    public readonly shortMessage: string,
-    public readonly source?: InputStream
-  ) {
-    super(
-      `${shortMessage}${
-        source
-          ? ` at ${source.sourcePosition.line}:${
-              source.sourcePosition.column
-            }${createPointer(source)}`
-          : ""
-      }`
-    );
+  public constructor(message: string, public readonly source?: InputStream) {
+    super(message);
 
     if (source) {
       this.line = source.currentLine;
-      this.position = source.sourcePosition;
+      this.location = source.location;
     }
   }
-}
-
-function createPointer(src: InputStream): string {
-  const errorLine = src.currentLine;
-  const errorPosition = src.sourcePosition.column;
-
-  return `\n${errorLine}\n${" ".repeat(errorPosition)}^`;
 }
