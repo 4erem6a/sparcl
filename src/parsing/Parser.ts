@@ -1,5 +1,5 @@
 import { ParserFunction } from "./ParserFunction";
-import { InputStream } from "../input/InputStream";
+import { InputStream } from "@4erem6a/inputstream";
 import { ParsingResult, complete, raise } from "./ParsingResult";
 import { ParseError } from "./ParseError";
 
@@ -10,8 +10,7 @@ export class Parser<T> {
   public parse(source: InputStream): ParsingResult<T>;
   public parse(source: string | InputStream): ParsingResult<T>;
   public parse(source: string | InputStream): ParsingResult<T> {
-    const inputStream =
-      typeof source == "string" ? new InputStream(source) : source;
+    const inputStream = typeof source == "string" ? new InputStream(source) : source;
 
     return this.parserFunction(inputStream);
   }

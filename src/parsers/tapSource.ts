@@ -1,4 +1,4 @@
-import { InputStream } from "../input/InputStream";
+import { InputStream } from "@4erem6a/inputstream";
 import { createParser } from "../parsing/Parser";
 import { complete } from "../parsing/ParsingResult";
 
