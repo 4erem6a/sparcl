@@ -7,7 +7,7 @@
     "clear": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./scripts/clearDistDirs.ps1",
     "buildRelease": "yarn clear && node_modules/.bin/tsc",
     "buildDebug": "yarn clear && node_modules/.bin/tsc --inlineSourceMap",
-    "test": "node_modules/.bim/jest",
+    "test": "node_modules/.bin/jest",
     "lint": "node_modules/.bin/eslint src/**",
     "prepublishOnly": "yarn lint && yarn build && yarn test"
   },
