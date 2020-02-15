@@ -1,9 +1,9 @@
-import { Parser, createParser } from "../parsing/Parser";
+import { Parser } from "../parsing/Parser";
 import { InputStream } from "@4erem6a/inputstream";
 import { complete } from "../parsing/ParsingResult";
 
-export function getInputStream<T>(parser: Parser<T>) {
-  return createParser<[T, InputStream]>(src => {
+export function getSource<T>(parser: Parser<T>): Parser<[T, InputStream]> {
+  return new Parser<[T, InputStream]>(src => {
     const result = parser.parse(src);
 
     if (result.isError) {
