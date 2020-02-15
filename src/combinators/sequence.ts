@@ -1,12 +1,18 @@
-import { createParser, Parser } from "../parsing/Parser";
+import { Parser } from "../parsing/Parser";
 import { complete } from "../parsing/ParsingResult";
-import { ParserSequenceResultType } from "../utils/types";
+import { ParserResultType } from "../utils/types";
 
-export function sequence<T extends Parser<any>[]>(...parsers: T) {
-  return createParser<ParserSequenceResultType<T>>(src => {
+export type ParserSequenceResultType<P> = {
+  [K in keyof P]: ParserResultType<P[K]>;
+};
+
+export function sequence<T extends Parser<unknown>[]>(
+  ...parsers: T
+): Parser<ParserSequenceResultType<T>> {
+  return new Parser<ParserSequenceResultType<T>>(src => {
     const result = [];
 
-    for (let parser of parsers) {
+    for (const parser of parsers) {
       const currentResult = parser.parse(src);
 
       if (currentResult.isError) {
