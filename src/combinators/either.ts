@@ -1,6 +1,6 @@
 import { Parser, createParser } from "../parsing/Parser";
 import { ParseError } from "../parsing/ParseError";
-import { complete, raise } from "../parsing/ParserResult";
+import { complete, raise } from "../parsing/ParsingResult";
 import { ParserResultType } from "../utils/types";
 
 export function either<T extends Parser<any>[]>(...parsers: T) {

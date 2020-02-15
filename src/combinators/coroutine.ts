@@ -1,10 +1,10 @@
 import { Parser, createParser } from "../parsing/Parser";
-import { ParserResult } from "../parsing/ParserResult";
+import { ParsingResult } from "../parsing/ParsingResult";
 
 type ParserCoroutine<T, R> = () => Generator<
   Parser<T>,
-  ParserResult<R>,
-  ParserResult<T>
+  ParsingResult<R>,
+  ParsingResult<T>
 >;
 
 export function coroutine<T, R>(coroutine: ParserCoroutine<T, R>) {

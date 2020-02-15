@@ -1,6 +1,6 @@
 import { Parser, createParser } from "../parsing/Parser";
 import { InputStream } from "../input/InputStream";
-import { complete } from "../parsing/ParserResult";
+import { complete } from "../parsing/ParsingResult";
 
 export function getInputStream<T>(parser: Parser<T>) {
   return createParser<[T, InputStream]>(src => {

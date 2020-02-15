@@ -23,6 +23,6 @@ export * from "./parsers/whitespace";
 export * from "./parsing/ParseError";
 export * from "./parsing/Parser";
 export * from "./parsing/ParserFunction";
-export * from "./parsing/ParserResult";
+export * from "./parsing/ParsingResult";
 
 export * from "./utils/types";

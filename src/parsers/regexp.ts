@@ -1,5 +1,5 @@
 import { createParser } from "../parsing/Parser";
-import { complete, raise } from "../parsing/ParserResult";
+import { complete, raise } from "../parsing/ParsingResult";
 
 export function regexp(pattern: RegExp) {
   return createParser<RegExpMatchArray>(src => {

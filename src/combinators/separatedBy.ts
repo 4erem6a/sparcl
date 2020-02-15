@@ -1,5 +1,5 @@
 import { Parser, createParser } from "../parsing/Parser";
-import { complete } from "../parsing/ParserResult";
+import { complete } from "../parsing/ParsingResult";
 
 export function separatedBy<T>(separator: Parser<any>, parser: Parser<T>) {
   return createParser<T[]>(src => {

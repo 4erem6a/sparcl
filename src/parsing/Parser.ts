@@ -1,15 +1,15 @@
 import { ParserFunction } from "./ParserFunction";
 import { InputStream } from "../input/InputStream";
-import { ParserResult, complete, raise } from "./ParserResult";
+import { ParsingResult, complete, raise } from "./ParsingResult";
 import { ParseError } from "./ParseError";
 
 export class Parser<T> {
   public constructor(public readonly parserFunction: ParserFunction<T>) {}
 
-  public parse(source: string): ParserResult<T>;
-  public parse(source: InputStream): ParserResult<T>;
-  public parse(source: string | InputStream): ParserResult<T>;
-  public parse(source: string | InputStream): ParserResult<T> {
+  public parse(source: string): ParsingResult<T>;
+  public parse(source: InputStream): ParsingResult<T>;
+  public parse(source: string | InputStream): ParsingResult<T>;
+  public parse(source: string | InputStream): ParsingResult<T> {
     const inputStream =
       typeof source == "string" ? new InputStream(source) : source;
 
@@ -24,7 +24,7 @@ export class Parser<T> {
     });
   }
 
-  public mapResult<R>(mapper: (result: ParserResult<T>) => ParserResult<R>) {
+  public mapResult<R>(mapper: (result: ParsingResult<T>) => ParsingResult<R>) {
     return new Parser<R>(source => {
       const result = this.parse(source);
 
@@ -32,7 +32,7 @@ export class Parser<T> {
     });
   }
 
-  public mapError<R>(mapper: (error: ParseError) => ParserResult<R>) {
+  public mapError<R>(mapper: (error: ParseError) => ParsingResult<R>) {
     return new Parser<T | R>(source => {
       const result = this.parse(source);
 
@@ -50,7 +50,7 @@ export class Parser<T> {
     });
   }
 
-  public chain<R>(fn: (result: ParserResult<T>) => Parser<R>) {
+  public chain<R>(fn: (result: ParsingResult<T>) => Parser<R>) {
     return new Parser<R>(source => {
       const result = this.parse(source);
 
@@ -79,7 +79,7 @@ export class Parser<T> {
       });
   }
 
-  public tapResult(fn: (result: ParserResult<T>) => void) {
+  public tapResult(fn: (result: ParsingResult<T>) => void) {
     return this.mapResult(result => {
       fn(result);
 
