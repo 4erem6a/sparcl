@@ -7,7 +7,6 @@
     "clear": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./scripts/clearDistDirs.ps1",
     "buildRelease": "node_modules/.bin/tsc",
     "buildDebug": "node_modules/.bin/tsc --inlineSourceMap",
-    "watch": "node_modules/.bin/tsc -w",
     "test": "jest",
     "prepublishOnly": "yarn build && yarn test"
   },
