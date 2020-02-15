@@ -7,9 +7,6 @@ export * from "./combinators/takeAll";
 export * from "./combinators/takeOneOrMore";
 export * from "./combinators/lookAhead";
 
-export * from "./input/InputStream";
-export * from "./input/SourcePosition";
-
 export * from "./parsers/digit";
 export * from "./parsers/digits";
 export * from "./parsers/eof";
