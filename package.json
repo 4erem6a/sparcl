@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "clear": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./scripts/clearDistDirs.ps1",
-    "buildRelease": "node_modules/.bin/tsc",
-    "buildDebug": "node_modules/.bin/tsc --inlineSourceMap",
+    "buildRelease": "yarn clear && node_modules/.bin/tsc",
+    "buildDebug": "yarn clear && node_modules/.bin/tsc --inlineSourceMap",
     "test": "jest",
     "prepublishOnly": "yarn build && yarn test"
   },
