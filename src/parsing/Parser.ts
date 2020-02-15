@@ -36,6 +36,14 @@ export class Parser<T> {
     });
   }
 
+  public chain<R>(fn: (result: ParsingResult<T>) => Parser<R>): Parser<R> {
+    return new Parser<R>(source => {
+      const result = this.parse(source);
+
+      return fn(result).parse(source);
+    });
+  }
+
   public default<R = T>(defaultResult: R): Parser<T | R> {
     return this.mapError<R>(() => complete(defaultResult));
   }
@@ -43,14 +51,6 @@ export class Parser<T> {
   public throwing(): Parser<T> {
     return this.mapError<T>(error => {
       throw error;
-    });
-  }
-
-  public chain<R>(fn: (result: ParsingResult<T>) => Parser<R>): Parser<R> {
-    return new Parser<R>(source => {
-      const result = this.parse(source);
-
-      return fn(result).parse(source);
     });
   }
 }
