@@ -11,6 +11,7 @@ expect.extend({
     const { isError, error } = receiver.parse(input);
 
     expect(isError).toBeTruthy();
+    expect(error).toBeDefined();
 
     if (typeof expectedError == "string") {
       expect(error.message).toContain(expectedError);
