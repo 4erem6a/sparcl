@@ -1,12 +1,12 @@
-import { createParser, Parser } from "../parsing/Parser";
+import { Parser } from "../parsing/Parser";
 
-export function lookAhead<T>(parser: Parser<T>) {
-  return createParser<T>(src => {
+export function lookAhead<T>(parser: Parser<T>): Parser<T> {
+  return new Parser<T>(src => {
     const position = src.position;
 
     const result = parser.parse(src);
 
-    src.move(position - src.position);
+    src.moveTo(position);
 
     return result;
   });
