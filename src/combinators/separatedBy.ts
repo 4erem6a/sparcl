@@ -1,8 +1,11 @@
-import { Parser, createParser } from "../parsing/Parser";
+import { Parser } from "../parsing/Parser";
 import { complete } from "../parsing/ParsingResult";
 
-export function separatedBy<T>(separator: Parser<any>, parser: Parser<T>) {
-  return createParser<T[]>(src => {
+export function separatedBy<T>(
+  separator: Parser<unknown>,
+  parser: Parser<T>
+): Parser<T[]> {
+  return new Parser<T[]>(src => {
     const result = [];
 
     do {
