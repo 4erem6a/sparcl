@@ -5,15 +5,13 @@ export type ParsingResult<T> =
   | { isError: false; value: T }
   | { isError: true; error: ParseError };
 
-export function raise(
-  message: string,
-  source?: InputStream
-): ParsingResult<any>;
-export function raise(error: ParseError): ParsingResult<any>;
+export function raise(message: string, source?: InputStream): ParsingResult<never>;
+export function raise(error: ParseError): ParsingResult<never>;
+
 export function raise(
   errorOrMessage: ParseError | string,
   maybeSource?: InputStream
-): ParsingResult<any> {
+): ParsingResult<never> {
   if (errorOrMessage instanceof ParseError) {
     return { isError: true, error: errorOrMessage };
   } else {
