@@ -1,9 +1,12 @@
-import { createParser } from "../parsing/Parser";
+import { Parser } from "../parsing/Parser";
 import { complete, raise } from "../parsing/ParsingResult";
 
-export function regexp(pattern: RegExp) {
-  return createParser<RegExpMatchArray>(src => {
-    const match = src.matchRegExp(pattern);
+const normalizeRegExp = (regexp: RegExp): RegExp =>
+  regexp.source.startsWith("^") ? regexp : new RegExp(`^${regexp.source}`, regexp.flags);
+
+export function regexp(pattern: RegExp): Parser<RegExpMatchArray> {
+  return new Parser<RegExpMatchArray>(src => {
+    const match = src.matchRegExp(normalizeRegExp(pattern));
 
     if (!match) {
       return raise(`Expected /${pattern.source}/${pattern.flags}`, src);
