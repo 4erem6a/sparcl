@@ -28,5 +28,8 @@
     "parser",
     "combinator",
     "parsing"
-  ]
+  ],
+  "dependencies": {
+    "@4erem6a/inputstream": "^1.0.0"
+  }
 }
