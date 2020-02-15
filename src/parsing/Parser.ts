@@ -53,35 +53,6 @@ export class Parser<T> {
       return fn(result).parse(source);
     });
   }
-
-  public toFunction() {
-    return (source: string | InputStream) => this.parse(source);
-  }
-
-  public toAsyncFunction() {
-    return (source: string | InputStream) =>
-      new Promise<T>((resolve, reject) => {
-        try {
-          const result = this.parse(source);
-
-          if (result.isError) {
-            reject(result.error);
-          } else {
-            resolve(result.value);
-          }
-        } catch (error) {
-          reject(error);
-        }
-      });
-  }
-
-  public tapResult(fn: (result: ParsingResult<T>) => void) {
-    return this.mapResult(result => {
-      fn(result);
-
-      return result;
-    });
-  }
 }
 
 export function createParser<T>(parserFunction: ParserFunction<T>): Parser<T> {
