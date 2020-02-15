@@ -1,6 +1,6 @@
 import { ParserFunction } from "./ParserFunction";
 import { InputStream } from "@4erem6a/inputstream";
-import { ParsingResult, complete, raise } from "./ParsingResult";
+import { ParsingResult, complete } from "./ParsingResult";
 import { ParseError } from "./ParseError";
 
 export class Parser<T> {
