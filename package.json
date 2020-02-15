@@ -4,6 +4,7 @@
   "description": "A simple parser combinator library",
   "main": "dist/index.js",
   "scripts": {
+    "clear": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./scripts/clearDistDirs.ps1",
     "build": "node_modules/.bin/tsc",
     "watch": "node_modules/.bin/tsc -w",
     "test": "jest",
