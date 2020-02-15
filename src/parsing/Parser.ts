@@ -54,7 +54,3 @@ export class Parser<T> {
     });
   }
 }
-
-export function createParser<T>(parserFunction: ParserFunction<T>): Parser<T> {
-  return new Parser(parserFunction);
-}
