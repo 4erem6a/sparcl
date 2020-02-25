@@ -4,7 +4,7 @@
   "description": "A simple parser combinator library",
   "main": "dist/index.js",
   "scripts": {
-    "clear": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./scripts/clearDistDirs.ps1",
+    "clear": "rimraf dist && rimraf types",
     "buildRelease": "yarn clear && node_modules/.bin/tsc",
     "buildDebug": "yarn clear && node_modules/.bin/tsc --inlineSourceMap",
     "test": "node_modules/.bin/jest",
@@ -22,6 +22,7 @@
     "@typescript-eslint/parser": "^2.19.2",
     "eslint": "^6.8.0",
     "jest": "^24.9.0",
+    "rimraf": "^3.0.2",
     "typescript": "^3.6.4"
   },
   "keywords": [
