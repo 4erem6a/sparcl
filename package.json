@@ -3,6 +3,7 @@
   "version": "0.1.6",
   "description": "A simple parser combinator library",
   "main": "dist/index.js",
+  "types": "./types",
   "scripts": {
     "clean": "rimraf dist && rimraf types",
     "buildRelease": "yarn clean && tsc",
