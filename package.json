@@ -5,10 +5,10 @@
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist && rimraf types",
-    "buildRelease": "yarn clean && node_modules/.bin/tsc",
-    "buildDebug": "yarn clean && node_modules/.bin/tsc --inlineSourceMap",
-    "test": "node_modules/.bin/jest",
-    "lint": "node_modules/.bin/eslint src/**",
+    "buildRelease": "yarn clean && tsc",
+    "buildDebug": "yarn clean && tsc --inlineSourceMap",
+    "test": "jest",
+    "lint": "eslint src/**",
     "prepublishOnly": "yarn lint && yarn build && yarn test"
   },
   "repository": {
