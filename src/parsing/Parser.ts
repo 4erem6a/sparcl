@@ -4,7 +4,7 @@ import { ParsingResult, complete } from "./ParsingResult";
 import { ParseError } from "./ParseError";
 
 export class Parser<T> {
-  public constructor(public readonly parserFunction: ParserFunction<T>) {}
+  public constructor(protected parserFunction: ParserFunction<T>) {}
 
   public parse(source: string | InputStream): ParsingResult<T> {
     const inputStream = typeof source == "string" ? new InputStream(source) : source;
