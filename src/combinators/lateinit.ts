@@ -11,6 +11,6 @@ export class LateinitParser<T> extends Parser<T> {
   }
 }
 
-export function lateinit<T>(): Parser<T> {
+export function lateinit<T>(): LateinitParser<T> {
   return new LateinitParser<T>();
 }
