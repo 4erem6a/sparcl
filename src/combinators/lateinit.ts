@@ -1,14 +1,13 @@
 import { Parser } from "../parsing/Parser";
 import { raise } from "../parsing/ParsingResult";
-import { ParserFunction } from "../parsing/ParserFunction";
 
 export class LateinitParser<T> extends Parser<T> {
   public constructor() {
     super(src => raise("Uninitialized lateinit parser", src));
   }
 
-  public init(parserFunction: ParserFunction<T>): void {
-    this.parserFunction = parserFunction;
+  public init(parser: Parser<T>): void {
+    this.parserFunction = src => parser.parse(src);
   }
 }
 
