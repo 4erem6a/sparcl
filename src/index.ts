@@ -1,4 +1,5 @@
 export * from "./combinators/either";
+export * from "./combinators/lateinit";
 export * from "./combinators/optional";
 export * from "./combinators/separatedBy";
 export * from "./combinators/sequence";
