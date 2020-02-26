@@ -1,5 +1,6 @@
 import { Parser } from "../parsing/Parser";
-import { raise } from "../parsing/ParsingResult";
+import { raise, ParsingResult } from "../parsing/ParsingResult";
+import { InputStream } from "@4erem6a/inputstream";
 
 export class LateinitParser<T> extends Parser<T> {
   public constructor() {
@@ -7,7 +8,7 @@ export class LateinitParser<T> extends Parser<T> {
   }
 
   public init(parser: Parser<T>): void {
-    this.parserFunction = src => parser.parse(src);
+    this.parserFunction = (src: InputStream): ParsingResult<T> => parser.parse(src);
   }
 }
 
