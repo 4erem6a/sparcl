@@ -1,7 +1,7 @@
 import { InputStream } from "@4erem6a/inputstream";
 import { ParsingResult } from "./ParsingResult";
 
-export interface ParserState<T> {
+export interface ParserState<T = never> {
   source: InputStream;
-  result?: ParsingResult<T>;
+  result: T extends never ? undefined : ParsingResult<T>;
 }
