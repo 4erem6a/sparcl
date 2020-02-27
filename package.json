@@ -6,8 +6,8 @@
   "types": "./types",
   "scripts": {
     "clean": "rimraf dist && rimraf types",
-    "buildRelease": "yarn clean && tsc",
     "buildDebug": "yarn clean && tsc --inlineSourceMap",
+    "build": "yarn clean && tsc",
     "test": "jest",
     "lint": "eslint src/**",
     "prepublishOnly": "yarn lint && yarn build && yarn test"
