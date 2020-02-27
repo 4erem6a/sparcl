@@ -16,6 +16,11 @@
     "type": "git",
     "url": "git+https://github.com/4erem6a/sparcl.git"
   },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./tests/setupTests.js"
+    ]
+  },
   "author": "4erem6a",
   "license": "MIT",
   "devDependencies": {
