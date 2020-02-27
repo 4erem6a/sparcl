@@ -10,7 +10,8 @@
     "build": "yarn clean && tsc",
     "test": "jest",
     "lint": "eslint src/**",
-    "prepublishOnly": "yarn lint && yarn build && yarn test"
+    "prepublishOnly": "yarn lint && yarn build && yarn test",
+    "postpublish": "yarn clean"
   },
   "repository": {
     "type": "git",
