@@ -1,4 +1,6 @@
-import { InputStream } from "@4erem6a/inputstream";
 import { ParsingResult } from "./ParsingResult";
+import { ParserState } from "./ParserState";
 
-export type ParserFunction<R> = (source: InputStream) => ParsingResult<R>;
+export type ParserFunction<TResult, TState = never> = (
+  state: ParserState<TState>
+) => ParsingResult<TResult>;
