@@ -3,5 +3,5 @@ import { ParsingResult } from "./ParsingResult";
 
 export interface ParserState<T> {
   source: InputStream;
-  result: ParsingResult<T>;
+  result?: ParsingResult<T>;
 }
