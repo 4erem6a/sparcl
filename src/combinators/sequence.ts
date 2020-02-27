@@ -10,12 +10,16 @@ export function sequence<T extends Parser<unknown>[]>(
   ...parsers: T
 ): Parser<ParserSequenceResultType<T>> {
   return new Parser<ParserSequenceResultType<T>>(src => {
+    const initialPosition = src.position;
+
     const result = [];
 
     for (const parser of parsers) {
       const currentResult = parser.parse(src);
 
       if (currentResult.isError) {
+        src.moveTo(initialPosition);
+
         return currentResult;
       }
 
