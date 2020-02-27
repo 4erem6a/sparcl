@@ -1,25 +1,27 @@
 import { InputStream } from "@4erem6a/inputstream";
 import { ParsingResult } from "./ParsingResult";
 
-type ParserStateResult<T> = T extends never ? undefined : ParsingResult<T>;
-
 export interface ParserState<T = never> {
   source: InputStream;
-  result: ParserStateResult<T>;
+  result?: ParsingResult<T>;
 }
 
 export function createState(source: InputStream): ParserState;
 export function createState<T>(
   source: InputStream,
-  result: ParserStateResult<T>
+  result: ParsingResult<T>
 ): ParserState;
 
 export function createState<T>(
   source: InputStream,
-  result?: ParserStateResult<T>
+  result?: ParsingResult<T>
 ): ParserState<T> {
-  return {
-    source,
-    result: result as ParserStateResult<T>
-  };
+  return { source, result };
+}
+
+export function updateState<T, R>(
+  state: ParserState<T>,
+  result: ParsingResult<R>
+): ParserState<R> {
+  return { ...state, result };
 }
