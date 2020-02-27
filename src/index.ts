@@ -3,7 +3,7 @@ export * from "./combinators/lateinit";
 export * from "./combinators/optional";
 export * from "./combinators/separatedBy";
 export * from "./combinators/sequence";
-export * from "./combinators/noneOrMore";
+export * from "./combinators/zeroOrMore";
 export * from "./combinators/oneOrMore";
 export * from "./combinators/lookAhead";
 export * from "./combinators/tap";

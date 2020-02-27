@@ -1,7 +1,7 @@
 import { Parser } from "../parsing/Parser";
 import { complete } from "../parsing/ParsingResult";
 
-export function noneOrMore<T>(parser: Parser<T>): Parser<T[]> {
+export function zeroOrMore<T>(parser: Parser<T>): Parser<T[]> {
   return new Parser<T[]>(src => {
     const result: T[] = [];
 
