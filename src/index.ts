@@ -1,10 +1,11 @@
 export * from "./combinators/either";
 export * from "./combinators/lateinit";
-export * from "./combinators/optional";
 export * from "./combinators/separatedBy";
 export * from "./combinators/sequence";
-export * from "./combinators/zeroOrMore";
-export * from "./combinators/oneOrMore";
+export * from "./combinators/quantifiers/quantifier";
+export * from "./combinators/quantifiers/optional";
+export * from "./combinators/quantifiers/zeroOrMore";
+export * from "./combinators/quantifiers/oneOrMore";
 export * from "./combinators/lookAhead";
 export * from "./combinators/tap";
 
