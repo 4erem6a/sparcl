@@ -1,12 +1,15 @@
 import { Parser } from "../parsing/Parser";
-import { complete } from "../parsing/ParsingResult";
+import { complete, ParsingResult } from "../parsing/ParsingResult";
 
-export function separatedBy<T>(
-  separator: Parser<unknown>,
+export function separatedBy<T, S>(
+  separator: Parser<S>,
   parser: Parser<T>
-): Parser<T[]> {
-  return new Parser<T[]>(src => {
-    const result = [];
+): Parser<[T[], S[]]> {
+  return new Parser<[T[], S[]]>((src) => {
+    const result: T[] = [];
+    const separators: S[] = [];
+
+    let currentSeparator: ParsingResult<S>;
 
     do {
       const currentResult = parser.parse(src);
@@ -16,8 +19,14 @@ export function separatedBy<T>(
       }
 
       result.push(currentResult.value);
-    } while (!separator.parse(src).isError);
 
-    return complete(result);
+      currentSeparator = separator.parse(src);
+
+      if (!currentSeparator.isError) {
+        separators.push(currentSeparator.value);
+      }
+    } while (!currentSeparator.isError);
+
+    return complete([result, separators]);
   });
 }
