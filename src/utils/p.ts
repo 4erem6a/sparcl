@@ -3,7 +3,7 @@ import { string } from "../parsers/basic/string";
 
 export function p(
   template: TemplateStringsArray,
-  substitutions: never[]
+  ...substitutions: never[]
 ): Parser<string> {
   const pattern = String.raw(template, substitutions);
 
